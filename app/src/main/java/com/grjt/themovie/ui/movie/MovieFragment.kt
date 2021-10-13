@@ -1,8 +1,6 @@
 package com.grjt.themovie.ui.movie
 
-import android.opengl.Visibility
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -12,7 +10,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.grjt.themovie.R
 import com.grjt.themovie.core.Resource
 import com.grjt.themovie.data.model.Movie
-import com.grjt.themovie.data.remote.MovieDataSource
+import com.grjt.themovie.data.remote.RemoteMovieDataSource
 import com.grjt.themovie.databinding.FragmentMovieBinding
 import com.grjt.themovie.presentation.MovieViewModel
 import com.grjt.themovie.presentation.MovieViewModelFactory
@@ -29,7 +27,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
     private val viewModel by viewModels<MovieViewModel> {
         MovieViewModelFactory(
             MovieRepositoryImpl(
-                MovieDataSource(RetrofitClient.webService)
+                RemoteMovieDataSource(RetrofitClient.webService)
             )
         )
     }
